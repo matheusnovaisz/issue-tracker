@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  node:
+    image: node:18-alpine
+    command: "yarn start:dev"
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on: 
+      - db
+    ports: 
+      - "3000:3000"
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: backend
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - backend-db:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+
+volumes:
+  backend-db:
