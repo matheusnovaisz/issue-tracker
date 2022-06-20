@@ -8,7 +8,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Roles } from '../enums/roles.enum';
+import { Role } from '../enums/roles.enum';
 
 @Entity()
 export class User {
@@ -36,10 +36,10 @@ export class User {
 
   @Column({
     type: 'enum',
-    enum: Roles,
-    default: Roles.DEVELOPER,
+    enum: Role,
+    default: Role.DEVELOPER,
   })
-  role: Roles;
+  role: Role;
 
   constructor(partial: Partial<User>) {
     Object.assign(this, partial);

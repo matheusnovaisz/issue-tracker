@@ -1,4 +1,4 @@
-export enum Roles {
+export enum Role {
   DEVELOPER = 'DEVELOPER',
   QA = 'QA TESTER',
   SCRUM_MASTER = 'SCRUM MASTER',

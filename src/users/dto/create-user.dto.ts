@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty } from 'class-validator';
-import { Roles } from '../enums/roles.enum';
+import { Role } from '../enums/roles.enum';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -8,6 +8,6 @@ export class CreateUserDto {
   @IsNotEmpty()
   password: string;
 
-  @IsEnum(Roles)
-  role: Roles;
+  @IsEnum(Role)
+  role: Role;
 }
