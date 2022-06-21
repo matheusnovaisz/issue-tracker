@@ -1,11 +1,13 @@
 import { hash } from 'bcrypt';
 import { Exclude } from 'class-transformer';
 import { IsNotEmpty } from 'class-validator';
+import { Issue } from 'src/issues/entities/issue.entity';
 import {
   BeforeInsert,
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Role } from '../enums/roles.enum';
@@ -40,6 +42,9 @@ export class User {
     default: Role.DEVELOPER,
   })
   role: Role;
+
+  @OneToMany(() => Issue, (issue) => issue.author, { eager: false })
+  issues: Issue[];
 
   constructor(partial: Partial<User>) {
     Object.assign(this, partial);
